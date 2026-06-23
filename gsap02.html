@@ -367,6 +367,74 @@
       anticipatePin: true,
       markers: true,
     })
+
+    //3. 이미지 랜덤으로 떨어지기
+    const ani3 = gsap.timeline();
+
+    ani3.from("#section3 .parallax__item__img", {
+      autoAlpha:0,
+      y: -100,
+      ease: "back.out(4)",
+      stagger: { //이미지들을 뜻합니다.
+        amount: 6, //이미지의 갯수
+        from: "random", //랜덤으로 이미지를 연출할 수 있다.
+      }
+    })
+
+    ScrollTrigger.create({
+      animation: ani3,
+      trigger: "#section3",
+      start: "top top",
+      end: "+=3000",
+      scrub: true,
+      pin: true,
+      markers: true,
+      anticipatePin: 1,
+    })
+
+    //5. 텍스트 애니메이션
+    //xPercent = 퍼센트를 표현할 때 사용
+    //to메서드의 3번째 인자로 "문자열"을 입력 => 동시에 애니메이션효과를 설정
+    const ani5 = gsap.timeline();
+
+    ani5.to("#section5 .t1", {xPercent: 300}, "text")
+      .to("#section5 .t2", {xPercent: -300}, "text")
+      .to("#section5 .t3", {xPercent: 300}, "text")
+      .to("#section5 .t4", {xPercent: -300}, "text")
+
+    ScrollTrigger.create({
+      animation: ani5,
+      trigger: "#section5",
+      start: "top top",
+      end: "+=3000",
+      scrub: true,
+      pin: true,
+      markers: true,
+      anticipatePin: 1,
+    })
+
+    //7. 텍스트 제자리 애니메이션
+    const ani7 = gsap.timeline();
+
+    //"+=1" : 이전 애니메이션이 끝나고 1초 뒤에 실행
+    ani7.from("#section7 .t1",{autoAlpha:0, duration: 1, y: 50}, "+=1")
+      .from("#section7 .t2",{autoAlpha:0, duration: 1, y: 50}, "+=1")
+      .from("#section7 .t3",{autoAlpha:0, duration: 1, y: 50}, "+=1")
+      .from("#section7 .t4",{autoAlpha:0, duration: 1, y: 50}, "+=1")
+      .from("#section7 .t5",{autoAlpha:0, duration: 1, y: 50}, "+=1")
+      .from("#section7 .t6",{autoAlpha:0, duration: 1, y: 50}, "+=1")
+      .from("#section7 .t7",{autoAlpha:0, duration: 1, y: 50}, "+=1")
+
+    ScrollTrigger.create({
+      animation: ani7,
+      trigger: "#section7",
+      start: "top top",
+      end: "+=6000",
+      scrub: true,
+      pin: true,
+      markers: true,
+      anticipatePin: 1,
+    })
   </script>
 </body>
 
